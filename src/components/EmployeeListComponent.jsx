@@ -14,6 +14,7 @@ class EmployeeListComponent extends Component {
         this.addEmployee = this.addEmployee.bind(this);
         this.editEmployee = this.editEmployee.bind(this);
         this.deleteEmployee = this.deleteEmployee.bind(this);
+        this.viewEmployee = this.viewEmployee.bind(this);
 
     }
 
@@ -38,6 +39,10 @@ class EmployeeListComponent extends Component {
 
     addEmployee() {
         this.props.history.push('/add_employee');
+    }
+
+    viewEmployee(id) {
+        this.props.history.push(`/view_employee/${id}`);
     }
 
 
@@ -67,8 +72,9 @@ class EmployeeListComponent extends Component {
                                             <td>{employee.lastName}</td>
                                             <td>{employee.emailId}</td>
                                             <td>
-                                                <button className="btn btn-info btn-sm" onClick={() => this.editEmployee(employee.id)}>Edit</button>
+                                                <button className="btn btn-success btn-sm" onClick={() => this.editEmployee(employee.id)}>Edit</button>
                                                 <button className="btn btn-danger btn-sm" onClick={() => this.deleteEmployee(employee.id)} style={{ marginLeft: "10px" }}>Delete</button>
+                                                <button className="btn btn-info btn-sm" onClick={() => this.viewEmployee(employee.id)} style={{ marginLeft: "10px" }}>View</button>
                                             </td>
                                         </tr>
                                 )
